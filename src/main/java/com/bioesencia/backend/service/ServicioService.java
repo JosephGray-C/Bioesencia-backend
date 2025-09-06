@@ -23,8 +23,12 @@ public class ServicioService {
         return servicioRepository.findAll();
     }
 
-    public void deleteById(Long id) {
-        servicioRepository.deleteById(id);
+    public boolean deleteById(Long id) {
+        if (servicioRepository.existsById(id)) {
+            servicioRepository.deleteById(id);
+            return true;
+        }
+        return false;
     }
     
     public Optional<Servicio> findById(Long id) {

@@ -3,6 +3,7 @@ package com.bioesencia.backend.controller;
 import com.bioesencia.backend.model.Post;
 import com.bioesencia.backend.service.PostService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -33,8 +34,13 @@ public class PostController {
     }
     
     @DeleteMapping("/eliminar/{id}")
-    public void eliminarPost(@PathVariable Long id) {
-        postService.eliminarPorId(id);
+    public ResponseEntity<Long> eliminarPost(@PathVariable Long id) {
+        boolean eliminado = postService.eliminarPorId(id);
+        if (eliminado) {
+            return ResponseEntity.ok().build();
+        } else {
+            return ResponseEntity.notFound().build();
+        }
     }
 
     @GetMapping("/{id}")

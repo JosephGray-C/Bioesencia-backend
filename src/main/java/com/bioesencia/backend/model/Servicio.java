@@ -8,9 +8,11 @@ import lombok.*;
 
 import java.math.BigDecimal;
 
-@Data
-@NoArgsConstructor
 @AllArgsConstructor
+@NoArgsConstructor
+@Getter
+@Setter
+@Data
 @Builder
 @Entity
 @Table(name = "servicios")

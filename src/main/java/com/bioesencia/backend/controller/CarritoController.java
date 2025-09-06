@@ -28,8 +28,12 @@ public class CarritoController {
 
     @DeleteMapping("/eliminar/{itemId}")
     public ResponseEntity<Void> eliminarItem(@PathVariable Long itemId) {
-        carritoService.eliminarItem(itemId);
-        return ResponseEntity.noContent().build();
+        boolean eliminado = carritoService.eliminarItem(itemId);
+        if (eliminado) {
+            return ResponseEntity.ok().build();
+        } else {
+            return ResponseEntity.notFound().build();
+        }
     }
     
     @DeleteMapping("/limpiar/{usuarioId}")

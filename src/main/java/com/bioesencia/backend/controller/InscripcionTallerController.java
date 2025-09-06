@@ -34,8 +34,12 @@ public class InscripcionTallerController {
     
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> eliminar(@PathVariable Long id) {
-        inscripcionService.eliminar(id);
-        return ResponseEntity.noContent().build();
+        boolean eliminado = inscripcionService.eliminar(id);
+        if (eliminado) {
+            return ResponseEntity.ok().build();
+        } else {
+            return ResponseEntity.notFound().build();
+        }
     }
 
     @GetMapping("/{id}")

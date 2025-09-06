@@ -8,9 +8,11 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 
 import lombok.*;
 
-@Data
-@NoArgsConstructor
 @AllArgsConstructor
+@NoArgsConstructor
+@Getter
+@Setter
+@Data
 @Builder
 @Entity
 @Table(name = "order_items")

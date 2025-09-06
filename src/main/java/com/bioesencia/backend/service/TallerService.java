@@ -23,8 +23,12 @@ public class TallerService {
         return tallerRepository.findAll();
     }
 
-    public void deleteById(Long id) {
-        tallerRepository.deleteById(id);
+    public boolean deleteById(Long id) {
+        if (tallerRepository.existsById(id)) {
+            tallerRepository.deleteById(id);
+            return true;
+        }
+        return false;
     }
 
     public Optional<Taller> findById(Long id) {

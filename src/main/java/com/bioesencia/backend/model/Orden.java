@@ -14,12 +14,12 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import lombok.*;
 
-@Data
-@NoArgsConstructor
 @AllArgsConstructor
-@Builder
+@NoArgsConstructor
 @Getter
 @Setter
+@Data
+@Builder
 @Entity
 @Table(name = "ordenes")
 public class Orden {

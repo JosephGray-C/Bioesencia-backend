@@ -3,11 +3,11 @@ package com.bioesencia.backend.model;
 import jakarta.persistence.*;
 import lombok.*;
 
-@Entity
+@AllArgsConstructor
+@NoArgsConstructor
 @Getter
 @Setter
-@NoArgsConstructor
-@AllArgsConstructor
+@Entity
 @Builder
 public class CarritoItem {
 

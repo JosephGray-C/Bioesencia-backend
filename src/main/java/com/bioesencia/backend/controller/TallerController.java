@@ -40,12 +40,12 @@ public class TallerController {
     
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> eliminar(@PathVariable Long id) {
-        return tallerService.findById(id)
-        .map(t -> {
-            tallerService.deleteById(id);
-            return ResponseEntity.noContent().<Void>build();
-        })
-        .orElse(ResponseEntity.notFound().build());
+        boolean eliminado = tallerService.deleteById(id);
+        if (eliminado) {
+            return ResponseEntity.ok().build();
+        } else {
+            return ResponseEntity.notFound().build();
+        }
     }
     
     @GetMapping("/{id}")

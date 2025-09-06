@@ -28,11 +28,12 @@ public class InscripcionTallerService {
         return inscripcionRepository.findAll();
     }
 
-    public void eliminar(Long id) {
-        if (!inscripcionRepository.existsById(id)) {
-            throw new IllegalArgumentException("Inscripción no encontrada");
+    public boolean eliminar(Long id) {
+        if (inscripcionRepository.existsById(id)) {
+            inscripcionRepository.deleteById(id);
+            return true;
         }
-        inscripcionRepository.deleteById(id);
+        return false;
     }
 
     public Optional<InscripcionTaller> buscarPorId(Long id) {

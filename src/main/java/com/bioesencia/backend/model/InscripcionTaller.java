@@ -11,9 +11,11 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 import lombok.*;
 
-@Data
-@NoArgsConstructor
 @AllArgsConstructor
+@NoArgsConstructor
+@Getter
+@Setter
+@Data
 @Builder
 @Entity
 @Table(name = "inscripciones_taller")

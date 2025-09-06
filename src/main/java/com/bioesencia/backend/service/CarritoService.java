@@ -46,11 +46,19 @@ public class CarritoService {
         return carritoItemRepository.findByUsuarioIdAndProductoActivo(usuarioId);
     }
     
-    public void eliminarItem(Long itemId) {
-        carritoItemRepository.deleteById(itemId);
+    public boolean eliminarItem(Long itemId) {
+        if (carritoItemRepository.existsById(itemId)) {
+            carritoItemRepository.deleteById(itemId);
+            return true;
+        }
+        return false;
     }
 
-    public void limpiarPorUsuario(Long usuarioId) {
-        carritoItemRepository.deleteByUsuarioId(usuarioId);
+    public boolean limpiarPorUsuario(Long usuarioId) {
+        if(usuarioRepository.existsById(usuarioId)){
+            carritoItemRepository.deleteByUsuarioId(usuarioId);
+            return true;
+        }
+        return false;
     }
 }

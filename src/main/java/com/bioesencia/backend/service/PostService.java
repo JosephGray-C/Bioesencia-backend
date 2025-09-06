@@ -41,8 +41,12 @@ public class PostService {
     }
 
     // Eliminar un post por ID
-    public void eliminarPorId(Long id) {
-        postRepository.deleteById(id);
+    public boolean eliminarPorId(Long id) {
+        if (postRepository.existsById(id)) {
+            postRepository.deleteById(id);
+            return true;
+        }
+        return false;
     }
 
     // Buscar un post por ID

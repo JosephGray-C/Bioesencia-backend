@@ -39,8 +39,12 @@ public class CitaController {
     
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> eliminar(@PathVariable Long id) {
-        citaService.eliminar(id);
-        return ResponseEntity.noContent().build();
+        boolean eliminado = citaService.eliminar(id);
+        if (eliminado) {
+            return ResponseEntity.ok().build();
+        } else {
+            return ResponseEntity.notFound().build();
+        }
     }
     
     @GetMapping("/{id}")

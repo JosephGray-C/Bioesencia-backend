@@ -49,11 +49,12 @@ public class CitaService {
         }).orElseThrow(() -> new RuntimeException("Cita no encontrada"));
     }
     
-    public void eliminar(Long id) {
-        if (!citaRepository.existsById(id)) {
-            throw new IllegalArgumentException("No se encontró la cita con id: " + id);
+    public boolean eliminar(Long id) {
+        if (citaRepository.existsById(id)) {
+            citaRepository.deleteById(id);
+            return true;
         }
-        citaRepository.deleteById(id);
+        return false;
     }
 
     public Optional<Cita> findById(Long id) {

@@ -14,9 +14,11 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import lombok.*;
 
-@Data
-@NoArgsConstructor
 @AllArgsConstructor
+@NoArgsConstructor
+@Getter
+@Setter
+@Data
 @Builder
 @Entity
 @Table(name = "productos")
